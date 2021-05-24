@@ -6,10 +6,13 @@ import InterviewApi from '../utils/interviewAPI';
 import JobList from '../components/JobList';
 import SavedInterviewList from '../components/SavedInterviewList';
 import SavedJobList from '../components/SavedJobList';
+import Search from '../components/Search';
 
 function JobSeeker() {
   // Setting our component's initial state
   const [jobs, setJobs] = useState([]);
+  const [location, setLocation] = useState("");
+  const [jobsByLocation, setJobsByLocation] = useState([]);
   const [savedJobs, setSavedJobs] = useState([]);
   const [savedInterviews, setSavedInterviews] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
@@ -25,10 +28,20 @@ function JobSeeker() {
   function loadJobs() {
     JOBAPI.search()
       .then(res =>
-        setJobs(res.data)
+        {setJobs(res.data)
+        setJobsByLocation(res.data)}
       )
       .catch(err => console.log(err));
   };
+  function filterByLocation(){
+    const jobsFiltered = jobs.filter((job) => {
+      if (job.location.indexOf(location) > 0) {
+        return false;
+      }
+      return false;
+    });
+    setJobsByLocation(jobsFiltered);
+  }
   function loadInterviews() {
     InterviewApi.getSavedInterview()
       .then(res =>
@@ -95,8 +108,11 @@ function JobSeeker() {
 
           */}
           </Col>
+          <Col size="sm-12">
+            <Search filterByLocation={filterByLocation} location={location} setLocation={setLocation} />
+          </Col>
           <Col size="sm-12 md-6">
-            <JobList jobs={jobs} handleSaveJob={handleJobSave}/>
+            <JobList jobs={jobsByLocation} handleSaveJob={handleJobSave}/>
           </Col>
           <Col size="sm-12 md-6">
             <h2>Saved Jobs</h2>
