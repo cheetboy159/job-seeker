@@ -96,17 +96,7 @@ function JobSeeker() {
             <Jumbotron>
               <h1>Job Seeker</h1>
             </Jumbotron>
-          {/* 
-          1. make a component that would hold all the job listings from the api
-
-          2. make a save job Button and function that would store the jobe in the db
-          3. make a component that will display the saved jobs
-          4. make a button that will link the job site
-          5. creat a txt input and function that will allow me to creat a date for the application- maybe use a react date component
-          6. creat a function that will save the job title, link, and date to the interview list
-          7. creat a component that will list our interviews.
-
-          */}
+          
           </Col>
           <Col size="sm-12">
             <Search filterByLocation={filterByLocation} location={location} setLocation={setLocation} />
