@@ -35,8 +35,13 @@ function JobSeeker() {
   };
   function filterByLocation(){
     const jobsFiltered = jobs.filter((job) => {
-      if (job.location.indexOf(location) > 0) {
-        return false;
+      const jobLocation = job.location.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '');
+      const locationTerm = location.toLowerCase().trim();
+      // console.log("job Location: ", jobLocation);
+      // console.log("location term: ", locationTerm);
+      // console.log(jobLocation.indexOf(locationTerm));
+      if (jobLocation.indexOf(locationTerm) >= 0) {
+        return true;
       }
       return false;
     });
@@ -87,7 +92,10 @@ function JobSeeker() {
     })
     .then((data)=>{console.log(data)})
   };
-
+  console.log({
+    jobs,
+    jobsByLocation
+  });
     return (
       <Container >
         <Row>
@@ -95,11 +103,12 @@ function JobSeeker() {
           <Col size=" sm-12">
             <Jumbotron>
               <h1>Job Seeker</h1>
+              <Search filterByLocation={filterByLocation} location={location} setLocation={setLocation} />
             </Jumbotron>
           
           </Col>
           <Col size="sm-12">
-            <Search filterByLocation={filterByLocation} location={location} setLocation={setLocation} />
+            
           </Col>
           <Col size="sm-12 md-6">
             <JobList jobs={jobsByLocation} handleSaveJob={handleJobSave}/>

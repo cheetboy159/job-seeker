@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function InterviewList({ savedInterviews }) {
-    console.log(savedInterviews);
+    // console.log(savedInterviews);
     return (
         <div>
             <ul className="list-unstyled">

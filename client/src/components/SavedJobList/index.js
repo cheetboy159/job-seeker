@@ -6,7 +6,7 @@ function createMarkup(content) {
 }
 
 export default function SavedJobList({ savedJobs, startDate, setStartDate, handleSavedInterview}) {
-    console.log(savedJobs);
+    // console.log(savedJobs);
     return (
         <div>
             <ul className="list-unstyled">
