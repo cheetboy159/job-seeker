@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:3001/api/interviews";
+const url = "/api/interviews";
 
 const interview = {
     saveInterview: function (interview) {
