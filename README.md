@@ -10,4 +10,4 @@ This app allowes the user to search for their future job. The user will be able 
 [I am a link to the web page](https://stark-thicket-31510.herokuapp.com/)
 
 ## Preview
-![Screenshot](./client/src/components/assets/employeeDirectory.JPG) 
+![Screenshot](./client/src/components/assets/jobSeeker.JPG) 
